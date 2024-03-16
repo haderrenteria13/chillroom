@@ -4,7 +4,7 @@ import google.generativeai as genai
 from flask import Response, jsonify, request, session
 from flask.blueprints import Blueprint
 
-from settings import SAFETY_SETTINGS
+from settings import SAFETY_SETTINGS, PERSONALITIES
 
 prompts_bp = Blueprint('prompts', __name__, url_prefix='/chat')
 
@@ -27,9 +27,14 @@ def start_chat():
         session['message_count'] = 0
         del session['messages']
 
+    if not request.json or not request.json.get('personality'):
+        return Response('Missing request data', 400)
+    elif request.json.get('personality') not in PERSONALITIES:
+        return Response('Personality not valid', 400)
+
     messages: list[dict[str, str | list[str]]] = []
     messages.append(
-        {'role': 'user', 'parts': ['Has un breve saludo']} # TODO cambiar para que cambie segun la personalidad dada
+        {'role': 'user', 'parts': [PERSONALITIES[request.json['personality']]]}
     )
 
     response = genai.GenerativeModel('gemini-pro').generate_content(messages).text
