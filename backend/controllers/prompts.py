@@ -11,6 +11,25 @@ if not GOOGLE_API_KEY:
     raise ValueError('No Google API key provided')
 genai.configure(api_key=GOOGLE_API_KEY)
 
+
+@prompts_bp.route('/start', methods=['GET'])
+def start_chat():
+    # TODO add docstrings
+    if not session.get('username'):
+        return Response('Anonymous user has not been set', status=403)
+
+    messages: list[dict[str, str | list[str]]] = []
+    messages.append(
+        {'role': 'user', 'parts': ['Has un breve saludo']} # TODO cambiar para que cambie segun la personalidad dada
+    )
+
+    response = genai.GenerativeModel('gemini-pro').generate_content(messages).text
+
+    messages.append({'role': 'model', 'parts': [response]})
+    session['messages'] = messages
+
+    return jsonify(msg=response)
+
 @prompts_bp.route('/answer', methods=['GET'])
 def get_ai_answer():
     """Envía un prompt a GPT-3.5 con la personalidad dada para obtener una respuesta.
@@ -31,6 +50,11 @@ def get_ai_answer():
     """
     if not session.get('username'):
         return Response('Anonymous user has not been set', status=403)
+    elif not session.get('messages'):
+        return Response('You have not started a conversation', status=400)
+
+    if session['message_count'] == 10:
+        return Response('Message limit exceeded', status=403) # TODO verificar si el status code usado es el adecuado
 
     if not request.json:
         return Response('Request must have JSON body', status=400)
@@ -41,14 +65,16 @@ def get_ai_answer():
     elif len(promt) > 100:
         return Response('The prompt is too long', status=400)
 
-    model = genai.GenerativeModel('gemini-pro')
+    session['messages'].append({'role': 'user', 'parts': [promt]})
 
-    # TODO usar start_chat junto con sesiones para mantener una conversación
-    response = model.generate_content(promt) # TODO verificar cuando el modelo da errores por uso inadecuado
+    response = ( # TODO verificar cuando el modelo da errores por uso inadecuado
+        genai
+        .GenerativeModel('gemini-pro')
+        .generate_content(session['messages'])
+        .text
+    )
 
-    if session['message_count'] == 50:
-        return Response('Message limit exceeded', status=403) # TODO verificar si el status code usado es el adecuado
-
+    session['messages'].append({'role': 'model', 'parts': [response]})
     session['message_count'] += 1
 
-    return jsonify(msg=response.text, msg_count=session['message_count'])
+    return jsonify(msg=response, msg_count=session['message_count'])
