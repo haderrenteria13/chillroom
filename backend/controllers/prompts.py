@@ -78,3 +78,16 @@ def get_ai_answer():
     session['message_count'] += 1
 
     return jsonify(msg=response, msg_count=session['message_count'])
+
+@prompts_bp.route('/reset', methods=['DELETE'])
+def reset_chat():
+    # TODO add docstrings
+    if not session.get('username'):
+        return Response('Anonymous user has not been set', status=403)
+    elif not session.get('messages'):
+        return Response('You have not started a conversation', status=400)
+
+    session['message_count'] = 0
+    del session['messages']
+
+    return Response(status=200)
