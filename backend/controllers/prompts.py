@@ -4,6 +4,8 @@ import google.generativeai as genai
 from flask import Response, jsonify, request, session
 from flask.blueprints import Blueprint
 
+from settings import SAFETY_SETTINGS
+
 prompts_bp = Blueprint('prompts', __name__, url_prefix='/chat')
 
 GOOGLE_API_KEY = getenv('GOOGLE_API_KEY') # TODO mover al módulo app
@@ -70,14 +72,19 @@ def get_ai_answer():
     response = ( # TODO verificar cuando el modelo da errores por uso inadecuado
         genai
         .GenerativeModel('gemini-pro')
-        .generate_content(session['messages'])
-        .text
+        .generate_content(
+            session['messages'],
+            safety_settings=SAFETY_SETTINGS
+        )
     )
 
-    session['messages'].append({'role': 'model', 'parts': [response]})
+    print(response.candidates[0].safety_ratings) # TODO convertir a logs
+    print(response.prompt_feedback)
+
+    session['messages'].append({'role': 'model', 'parts': [response.text]})
     session['message_count'] += 1
 
-    return jsonify(msg=response, msg_count=session['message_count'])
+    return jsonify(msg=response.text, msg_count=session['message_count'])
 
 @prompts_bp.route('/reset', methods=['DELETE'])
 def reset_chat():
