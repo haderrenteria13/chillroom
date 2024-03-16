@@ -69,7 +69,7 @@ def get_ai_answer():
 
     session['messages'].append({'role': 'user', 'parts': [promt]})
 
-    response = ( # TODO verificar cuando el modelo da errores por uso inadecuado
+    response = (
         genai
         .GenerativeModel('gemini-pro')
         .generate_content(
@@ -88,7 +88,17 @@ def get_ai_answer():
 
 @prompts_bp.route('/reset', methods=['DELETE'])
 def reset_chat():
-    # TODO add docstrings
+    """Reinicia los mensajes y el conteo de mensajes del usuario actual.
+
+    DELETE:
+        Response:
+            200: Se han reiniciado los datos correctamente.
+
+            400: Se ha accedido a este endpoint sin iniciar previamente una
+            conversacion con la IA.
+
+            403: Se ha accedido a este endpoint sin definir un usuario anonimo.
+    """
     if not session.get('username'):
         return Response('Anonymous user has not been set', status=403)
     elif not session.get('messages'):
