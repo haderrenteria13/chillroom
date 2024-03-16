@@ -4,7 +4,7 @@ import google.generativeai as genai
 from flask import Response, jsonify, request, session
 from flask.blueprints import Blueprint
 
-prompts_bp = Blueprint('prompts', __name__)
+prompts_bp = Blueprint('prompts', __name__, url_prefix='/chat')
 
 GOOGLE_API_KEY = getenv('GOOGLE_API_KEY') # TODO mover al módulo app
 if not GOOGLE_API_KEY:
