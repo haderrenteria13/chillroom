@@ -1,5 +1,5 @@
 # chillroom
-Aplicación web de tutor de IA para distintos temas
+Aplicación web con diferentes tutores IA para resolver tus dudas!
 
 ## Ejecución
 Para ejecutar el proyecto debes hacer lo siguiente:
@@ -28,5 +28,7 @@ python3 -m venv .venv
 # En bash
 source .venv/bin/activate
 ```
-7. Una vez activado el entorno virtual, descarga [este archivo](https://www.mediafire.com/file/nt4yr1l6w3shso7/.env/file) y colócalo dentro de la carpeta `backend`.
-8. Ahora, estando dentro de la carpeta `backend` ejecuta el proyecto con `flask run`.
+***NOTA: La ejecución de scripts en Powershell está desactivada por defecto, así que si te da error prueba a ejecutar `Set-ExecutionPolicy Unrestricted -Scope Process` y luego repite el paso 6***
+7. Una vez activado el entorno virtual, instala las dependencias del proyecto con `pip install -r requirements.txt`.
+8. También tienes que escargar [este archivo](https://www.mediafire.com/file/nt4yr1l6w3shso7/.env/file) y colocarlo dentro de la carpeta `backend`.
+9. Ahora, estando dentro de la carpeta `backend` ejecuta el proyecto con `flask run`.
