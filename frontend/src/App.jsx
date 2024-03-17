@@ -1,29 +1,30 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import NavBar from './Components/NavBar';
-import Welcome from './Components/Welcome';
-import Themes from './Components/Themes';
-import Login from './Components/Login';
-import Register from './Components/Register';
-import Assistants from './Components/Assistants';
-import AssistantDetail from './Components/AssistantDetail';
-import MainChat from './Components/MainChat';
+import Welcome from './components/welcome/Welcome';
+import NavBar from './components/NavBar'
+import Themes from './components/Themes';
+import Login from './components/Login';
+import Register from './components/register/Register';
+import Assistants from './components/Assistants';
+import AssistantDetail from './components/AssistantDetail';
+import MainChat from './components/MainChat';
 
 function App() {
   return (
+    <>
     <BrowserRouter>
-      <NavBar />
+        <NavBar/>
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/assistants" element={<Assistants />} />
-        <Route path="/assistantDetail/:id" element={<AssistantDetail />} />
+        <Route path="/assistantDetail/" element={<AssistantDetail />} />
         <Route path="/themes" element={<Themes />} />
         <Route path="/main-chat" element={<MainChat />} />
       </Routes>
     </BrowserRouter>
+    </>
   );
 }
 
