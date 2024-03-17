@@ -1,9 +1,42 @@
 <div id="main-block">
-    <h1>Elige a tu ayudante</h1>
-    <button hx-get="/chat/start/arty" hx-target="#main-block" hx-swap="outerHTML">Arty</button>
-    <button hx-get="/chat/start/mark" hx-target="#main-block" hx-swap="outerHTML">Mark</button>
-    <button hx-get="/chat/start/mentor" hx-target="#main-block" hx-swap="outerHTML">Mentor</button>
-    <button hx-get="/chat/start/sage" hx-target="#main-block" hx-swap="outerHTML">Sage</button>
-    <button hx-get="/chat/start/spark" hx-target="#main-block" hx-swap="outerHTML">Spark</button>
-    <button hx-get="/chat/start/sunny" hx-target="#main-block" hx-swap="outerHTML">Sunny</button>
+    <h1><span id="yellow">ChillRoom</span></h1>
+    <h2> <span id="blue">Elige</span> a tu ayudante</h2>
+
+    <div class="main-container">
+        <div class="assistants-container">
+            <img class="assistant-img" src="../static/Arty.jfif" alt="Arty">
+            <button hx-get="/chat/start/arty" hx-target="#main-block" hx-swap="outerHTML">Arty</button>
+            <p class="intro">El Entusiasta Creativo</p>
+        </div>
+
+        <div class="assistants-container">
+            <img class="assistant-img" src="../static/mark.jfif" alt="Mark">
+            <button hx-get="/chat/start/mark" hx-target="#main-block" hx-swap="outerHTML">Mark</button>
+            <p class="intro">El Guía Turístico</p>
+        </div>
+
+        <div class="assistants-container">
+            <img class="assistant-img" src="../static/mentor.jfif" alt="Mentor">
+            <button hx-get="/chat/start/mentor" hx-target="#main-block" hx-swap="outerHTML">Mentor</button>
+            <p class="intro">El Educador Paciente</p>
+        </div>
+
+        <div class="assistants-container">
+            <img class="assistant-img" src="../static/sage.jfif" alt="Mentor">
+            <button hx-get="/chat/start/sage" hx-target="#main-block" hx-swap="outerHTML">Sage</button>
+            <p class="intro">El Experto Profesional</p>
+        </div>
+
+        <div class="assistants-container">
+            <img class="assistant-img" src="../static/spark.jfif" alt="Mentor">
+            <button hx-get="/chat/start/spark" hx-target="#main-block" hx-swap="outerHTML">Spark</button>
+            <p class="intro">El Compañero Cómico</p>
+        </div>
+
+        <div class="assistants-container">
+            <img class="assistant-img" src="../static/sunny.jfif" alt="Mentor">
+            <button hx-get="/chat/start/sunny" hx-target="#main-block" hx-swap="outerHTML">Sunny</button>
+            <p class="intro">Asistente Amigable</p>
+        </div>
+    </div>
 </div>
