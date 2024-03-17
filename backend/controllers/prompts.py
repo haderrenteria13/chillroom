@@ -1,7 +1,7 @@
 from os import getenv
 
 import google.generativeai as genai
-from flask import Response, jsonify, request, session
+from flask import Response, jsonify, request, session, render_template
 from flask.blueprints import Blueprint
 
 from settings import SAFETY_SETTINGS, PERSONALITIES
@@ -14,8 +14,8 @@ if not GOOGLE_API_KEY:
 genai.configure(api_key=GOOGLE_API_KEY)
 
 
-@prompts_bp.route('/start', methods=['GET', 'DELETE'])
-def start_chat():
+@prompts_bp.route('/start/<personality>', methods=['GET', 'DELETE'])
+def start_chat(personality: str):
     # TODO add docstrings
     if not session.get('username'):
         return Response('Anonymous user has not been set', status=403)
@@ -27,14 +27,9 @@ def start_chat():
         session['message_count'] = 0
         del session['messages']
 
-    if not request.json or not request.json.get('personality'):
-        return Response('Missing request data', 400)
-    elif request.json.get('personality') not in PERSONALITIES:
-        return Response('Personality not valid', 400)
-
     messages: list[dict[str, str | list[str]]] = []
     messages.append(
-        {'role': 'user', 'parts': [PERSONALITIES[request.json['personality']]]}
+        {'role': 'user', 'parts': [PERSONALITIES[personality]]} # TODO verificar si existe la personalidad
     )
 
     response = genai.GenerativeModel('gemini-pro').generate_content(messages).text
@@ -42,9 +37,9 @@ def start_chat():
     messages.append({'role': 'model', 'parts': [response]})
     session['messages'] = messages
 
-    return jsonify(msg=response)
+    return render_template('chat.html', messages=session['messages'])
 
-@prompts_bp.route('/answer', methods=['GET'])
+@prompts_bp.route('/answer', methods=['POST'])
 def get_ai_answer():
     """Envía un prompt a GPT-3.5 con la personalidad dada para obtener una respuesta.
 
@@ -70,10 +65,11 @@ def get_ai_answer():
     if session['message_count'] == 10:
         return Response('Message limit exceeded', status=403) # TODO verificar si el status code usado es el adecuado
 
-    if not request.json:
-        return Response('Request must have JSON body', status=400)
+    if not request.form:
+        return Response('Request must have Form body', status=400)
 
-    promt = request.json.get('prompt')
+    promt = request.form.get('prompt')
+    print(promt) # TODO delete prompt
     if not promt:
         return Response('You have to provide a prompt', status=400)
     elif len(promt) > 100:
@@ -96,4 +92,4 @@ def get_ai_answer():
     session['messages'].append({'role': 'model', 'parts': [response.text]})
     session['message_count'] += 1
 
-    return jsonify(msg=response.text, msg_count=session['message_count'])
+    return render_template('messages.html', messages=session['messages'])
