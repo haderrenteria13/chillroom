@@ -64,9 +64,6 @@ def get_ai_answer(personality: str):
     elif not session.get('messages'):
         return Response('You have not started a conversation', status=400)
 
-    if session['message_count'] == 10:
-        return Response('Message limit exceeded', status=403) # TODO verificar si el status code usado es el adecuado
-
     if not request.form:
         return Response('Request must have Form body', status=400)
 

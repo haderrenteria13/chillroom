@@ -13,7 +13,7 @@ def main_page():
 def create_temp_user():
     # TODO add docstrings
     session['username'] = f'user_{time_ns()}'
-    session['message_count'] = 0
+    session['message_count'] = 0 # TODO eliminar conteo de mensajes
 
     if request.method == 'PUT':
         session['message_count'] = 0
