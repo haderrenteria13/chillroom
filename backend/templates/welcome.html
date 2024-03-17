@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/chillroom/backend/static/welcome.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='welcome.css') }}">
+    <script src="https://unpkg.com/htmx.org@1.9.11" integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChillRoom</title>
 </head>
 <body>
-    <h1 class="main-title"><span id="blue">Bienvenido</span> a <br> <span id="yellow">ChillRoom</span></h1>
-    <p class="intro">La transmisión del conocimiento se transforma en una experiencia apasionante.</p>
-    <button class="button" href="/assistants">Explora, aprende y conecta &rarr;</button>
+    <div id="main-block">
+        <h1 class="main-title"><span id="blue">Bienvenido</span> a <br> <span id="yellow">ChillRoom</span></h1>
+        <p class="intro">La transmisión del conocimiento se transforma en una experiencia apasionante.</p>
+        <button class="button" hx-get="/assistants">Explora, aprende y conecta &rarr;</button>
+    </div>
 </body>
 </html>
