@@ -1,17 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='welcome.css') }}">
     <script src="https://unpkg.com/htmx.org@1.9.11" integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChillRoom</title>
+    <title>Bienvenid@!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            overflow-y: hidden;
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
 </head>
 <body>
-    <div id="main-block">
-        <h1 class="main-title"><span id="blue">Bienvenido</span> a <br> <span id="yellow">ChillRoom</span></h1>
-        <p class="intro">La transmisión del conocimiento se transforma en una experiencia apasionante.</p>
-        <button class="button" hx-get="/assistants" hx-swap="outerHTML" hx-target="#main-block">Explora, aprende y conecta &rarr;</button>
+    <div class="bg-[url('static/fondo.jpg')] bg-cover bg-center h-screen" id="main-block">
+        <div class='container mx-auto'>
+          <div class="flex flex-col items-center justify-center h-screen">
+            <h1 class="text-white text-[80px] font-bold">Bienvenido a</h1>
+            <h2 class="text-[#7EBAFB] text-[60px] font-bold">ChillRoom</h2>
+            <p class="text-slate-400 text-sm">La transmisión del conocimiento se transforma en una experiencia apasionante.</p>
+  
+            <div class='pt-8'>
+                <button class="button border-[3px] border-white bg-white/5 backdrop-blur-sm text-sm rounded-full font-medium text-white px-12 py-2 hover:bg-white hover:text-black transition-colors flex items-center" hx-get="/assistants" hx-swap="outerHTML" hx-target="#main-block">Explora, aprende y conecta</button>
+            </div>
+  
+          </div>
+        </div>
     </div>
+
+
 </body>
 </html>
