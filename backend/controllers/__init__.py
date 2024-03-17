@@ -23,11 +23,11 @@ def register_endpoints(flask_app: Flask) -> None:
         Nothing.
     """
     if getenv('FLASK_DEBUG'):
-        controllers = glob('controllers/*.py')
+        controllers = 'controllers/*.py'
     else:
-        controllers = glob(join(getcwd(), 'chillroom/backend/*.py'))
+        controllers = join(getcwd(), 'chillroom/backend/controllers/*.py')
 
-    for module_path in controllers:
+    for module_path in glob(controllers):
         module_name = basename(module_path).removesuffix('.py')
 
         # Skip __init__ module
