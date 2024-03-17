@@ -28,7 +28,7 @@
                     {% endfor %}
                 </div>
                 <form hx-post="/chat/answer/{{ personality }}" hx-trigger="submit" hx-target="#main-block" class="flex gap-2 h-screen items-center justify-center">
-                    <input name="prompt" type="text" placeholder="Habla con la IA" class="button border-[3px] border-white bg-white/5 backdrop-blur-sm text-base md:text-sm lg:text-sm sm:text-sm rounded-lg font-medium text-white px-96 py-2 md:py-2 lg:py-3 hover:bg-white hover:text-black transition-colors text-left::placeholder" id="prompt-text">
+                    <input name="prompt" type="text" placeholder="Habla con la IA" maxlength="100" class="button border-[3px] border-white bg-white/5 backdrop-blur-sm text-base md:text-sm lg:text-sm sm:text-sm rounded-lg font-medium text-white px-96 py-2 md:py-2 lg:py-3 hover:bg-white hover:text-black transition-colors text-left::placeholder" id="prompt-text">
                     <button id="send-message" type="submit" title="Send Message" class="button border-[3px] border-white bg-white/5 backdrop-blur-sm text-base md:text-sm lg:text-sm sm:text-sm rounded-lg font-medium text-white transition-colors flex items-center px-8 md:px-12 py-2 md:py-2 lg:py-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-send-2 text-white">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
