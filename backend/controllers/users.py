@@ -17,4 +17,4 @@ def create_temp_user():
 
         return render_template('choose.html')
 
-    return render_template('main.html')
+    return render_template('assistants.html')
