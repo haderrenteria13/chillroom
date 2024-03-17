@@ -37,15 +37,12 @@ def start_chat(personality: str):
     messages.append({'role': 'model', 'parts': [response]})
     session['messages'] = messages
 
-    if request.method == 'DELETE':
-        return render_template('messages.html', messages=session['messages'])
-    else:
-        return render_template(
-            'chat.html', messages=session['messages'], personality=personality
-        )
+    return render_template(
+        'chat.html', messages=session['messages'], personality=personality
+    )
 
-@prompts_bp.route('/answer', methods=['POST'])
-def get_ai_answer():
+@prompts_bp.route('/answer/<personality>', methods=['POST'])
+def get_ai_answer(personality: str):
     """Envía un prompt a GPT-3.5 con la personalidad dada para obtener una respuesta.
 
     GET:
@@ -66,9 +63,6 @@ def get_ai_answer():
         return Response('Anonymous user has not been set', status=403)
     elif not session.get('messages'):
         return Response('You have not started a conversation', status=400)
-
-    if session['message_count'] == 10:
-        return Response('Message limit exceeded', status=403) # TODO verificar si el status code usado es el adecuado
 
     if not request.form:
         return Response('Request must have Form body', status=400)
@@ -97,4 +91,4 @@ def get_ai_answer():
     session['messages'].append({'role': 'model', 'parts': [response.text]})
     session['message_count'] += 1
 
-    return render_template('messages.html', messages=session['messages'])
+    return render_template('chat.html', messages=session['messages'], personality=personality)

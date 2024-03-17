@@ -1,18 +1,21 @@
-<!DOCTYPE html>
+<div id="main-block" class="bg-cover bg-center h-screen bg-[#14121C] bg-[url('static/elige-categoria.png')]">
+    <div class="container mx-auto">
+        <div class="flex flex-col items-start  h-screen">
+            <h1 class="text-white text-[80px] font-bold">Hola, <span class="text-[#7EBAFB]">Lexpin</span></h1>
+            <p class="text-slate-400 text-lg">Escoge tu asistente</p>
 
-<html>
-    <head>
-        <script src="https://unpkg.com/htmx.org@1.9.11" integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0" crossorigin="anonymous"></script>
-    </head>
-    <body>
-        <div id="main-block">
-            <h1>ChillRoom</h1>
-            <button hx-get="/chat/start/arty" hx-target="#main-block" hx-swap="outerHTML">Arty</button>
-            <button hx-get="/chat/start/mark" hx-target="#main-block" hx-swap="outerHTML">Mark</button>
-            <button hx-get="/chat/start/mentor" hx-target="#main-block" hx-swap="outerHTML">Mentor</button>
-            <button hx-get="/chat/start/sage" hx-target="#main-block" hx-swap="outerHTML">Sage</button>
-            <button hx-get="/chat/start/spark" hx-target="#main-block" hx-swap="outerHTML">Spark</button>
-            <button hx-get="/chat/start/sunny" hx-target="#main-block" hx-swap="outerHTML">Sunny</button>
+            <div class="pt-7">
+                <div class="flex gap-3 pb-3">
+                    <button class="border-[2px] border-white text-lg rounded-lg font-normal text-white px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center" hx-get="/chat/start/arty" hx-target="#main-block" hx-swap="outerHTML">Arty 🎨</button>
+                    <button class="border-[2px] border-white text-lg rounded-lg font-normal text-white px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center" hx-get="/chat/start/mark" hx-target="#main-block" hx-swap="outerHTML">Mark 🗺️</button>
+                    <button class="border-[2px] border-white text-lg rounded-lg font-normal text-white px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center" hx-get="/chat/start/mentor" hx-target="#main-block" hx-swap="outerHTML">Mentor 📚</button>
+                </div>
+                <div class="flex gap-3">
+                    <button class="border-[2px] border-white text-lg rounded-lg font-normal text-white px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center" hx-get="/chat/start/sage" hx-target="#main-block" hx-swap="outerHTML">Sage 🦠</button>
+                    <button class="border-[2px] border-white text-lg rounded-lg font-normal text-white px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center" hx-get="/chat/start/spark" hx-target="#main-block" hx-swap="outerHTML">Spark 🎭</button>
+                    <button class="border-[2px] border-white text-lg rounded-lg font-normal text-white px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center" hx-get="/chat/start/sunny" hx-target="#main-block" hx-swap="outerHTML">Sunny ☀️</button>
+                </div>
+            </div>
         </div>
-    </body>
-</html>
+    </div>
+</div>
