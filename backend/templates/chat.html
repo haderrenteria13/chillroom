@@ -1,9 +1,13 @@
-<div id="messages">
-    {% for message in messages[1:] %}
-        <p>{{ message.get("parts")[0] }}</p>
-    {% endfor %}
+<div id="main-block">
+    <div id="messages">
+        {% for message in messages[1:] %}
+            <p>{{ message.get("parts")[0] }}</p>
+        {% endfor %}
+    </div>
+    <form hx-post="/chat/answer" hx-trigger="submit" hx-target="#messages">
+        <input name="prompt" type="text" placeholder="Habla con la IA" class="form-text" id="prompt-text">
+        <button id="send-message" type="submit">Send message</button>
+    </form>
+    <button hx-delete="/chat/start/{{ personality }}" hx-target="#messages">Reiniciar chat</button>
+    <button hx-put="/users/new" hx-target="#main-block" hx-swap="outerHTML">Ir al menú principal</button>
 </div>
-<form hx-post="/chat/answer" hx-trigger="submit" hx-target="#messages">
-    <input name="prompt" type="text" placeholder="Habla con la IA" class="form-text" id="prompt-text">
-    <button id="send-message" type="submit">Send message</button>
-</form>

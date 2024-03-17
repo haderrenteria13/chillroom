@@ -37,7 +37,12 @@ def start_chat(personality: str):
     messages.append({'role': 'model', 'parts': [response]})
     session['messages'] = messages
 
-    return render_template('chat.html', messages=session['messages'])
+    if request.method == 'DELETE':
+        return render_template('messages.html', messages=session['messages'])
+    else:
+        return render_template(
+            'chat.html', messages=session['messages'], personality=personality
+        )
 
 @prompts_bp.route('/answer', methods=['POST'])
 def get_ai_answer():
