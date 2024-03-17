@@ -1,10 +1,12 @@
 # Bienvenidos a ChillRoom 👋🏿
 Aplicación web con diferentes tutores IA para resolver tus dudas!
 
+Puedes visitar la aplicación [aquí](http://gabrieleht.pythonanywhere.com/).
+
 ![Codicon](https://github.com/haderrenteria13/chillroom/assets/106301008/c800c832-503a-4913-bf9a-496f6f64ef07)
 
 ## 🚀 Ejecución
-Para ejecutar el proyecto debes hacer lo siguiente:
+Para ejecutar el proyecto en local debes hacer lo siguiente:
 
 1. Primero, debes de tener [Python](https://www.python.org/downloads/) instalado.
 2. Luego, debes clonar este repositorio usando el comando `git clone https://github.com/haderrenteria13/chillroom.git`.
