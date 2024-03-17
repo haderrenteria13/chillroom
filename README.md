@@ -1,5 +1,7 @@
-# chillroom
+# ChillRoom
 Aplicación web con diferentes tutores IA para resolver tus dudas!
+
+![Codicon](https://github.com/haderrenteria13/chillroom/assets/106301008/c800c832-503a-4913-bf9a-496f6f64ef07)
 
 ## Ejecución
 Para ejecutar el proyecto debes hacer lo siguiente:
