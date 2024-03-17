@@ -1,42 +1,21 @@
-<div id="main-block">
-    <h1><span id="yellow">ChillRoom</span></h1>
-    <h2> <span id="blue">Elige</span> a tu ayudante</h2>
+<div id="main-block" class="bg-cover bg-center h-screen bg-[#14121C] bg-[url('static/elige-categoria.png')]">
+    <div class="container mx-auto">
+        <div class="flex flex-col items-start  h-screen">
+            <h1 class="text-white text-[80px] font-bold">Hola, <span class="text-[#7EBAFB]">Lexpin</span></h1>
+            <p class="text-slate-400 text-lg">Escoge tu asistente</p>
 
-    <div class="main-container">
-        <div class="assistants-container">
-            <img class="assistant-img" src="../static/Arty.jfif" alt="Arty">
-            <button hx-get="/chat/start/arty" hx-target="#main-block" hx-swap="outerHTML">Arty</button>
-            <p class="intro">El Entusiasta Creativo</p>
-        </div>
-
-        <div class="assistants-container">
-            <img class="assistant-img" src="../static/mark.jfif" alt="Mark">
-            <button hx-get="/chat/start/mark" hx-target="#main-block" hx-swap="outerHTML">Mark</button>
-            <p class="intro">El Guía Turístico</p>
-        </div>
-
-        <div class="assistants-container">
-            <img class="assistant-img" src="../static/mentor.jfif" alt="Mentor">
-            <button hx-get="/chat/start/mentor" hx-target="#main-block" hx-swap="outerHTML">Mentor</button>
-            <p class="intro">El Educador Paciente</p>
-        </div>
-
-        <div class="assistants-container">
-            <img class="assistant-img" src="../static/sage.jfif" alt="Mentor">
-            <button hx-get="/chat/start/sage" hx-target="#main-block" hx-swap="outerHTML">Sage</button>
-            <p class="intro">El Experto Profesional</p>
-        </div>
-
-        <div class="assistants-container">
-            <img class="assistant-img" src="../static/spark.jfif" alt="Mentor">
-            <button hx-get="/chat/start/spark" hx-target="#main-block" hx-swap="outerHTML">Spark</button>
-            <p class="intro">El Compañero Cómico</p>
-        </div>
-
-        <div class="assistants-container">
-            <img class="assistant-img" src="../static/sunny.jfif" alt="Mentor">
-            <button hx-get="/chat/start/sunny" hx-target="#main-block" hx-swap="outerHTML">Sunny</button>
-            <p class="intro">Asistente Amigable</p>
+            <div class="pt-7">
+                <div class="flex gap-3 pb-3">
+                    <button class="border-[2px] border-white text-lg rounded-lg font-normal text-white px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center" hx-get="/chat/start/arty" hx-target="#main-block" hx-swap="outerHTML">Geografia 🗺️</button>
+                    <button class="border-[2px] border-white text-lg rounded-lg font-normal text-white px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center" hx-get="/chat/start/mark" hx-target="#main-block" hx-swap="outerHTML">Ciencias 🦠</button>
+                    <button class="border-[2px] border-white text-lg rounded-lg font-normal text-white px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center" hx-get="/chat/start/mentor" hx-target="#main-block" hx-swap="outerHTML">Arte 🎨</button>
+                </div>
+                <div class="flex gap-3">
+                    <button class="border-[2px] border-white text-lg rounded-lg font-normal text-white px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center" hx-get="/chat/start/sage" hx-target="#main-block" hx-swap="outerHTML">Deportes 🤾🏿</button>
+                    <button class="border-[2px] border-white text-lg rounded-lg font-normal text-white px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center" hx-get="/chat/start/spark" hx-target="#main-block" hx-swap="outerHTML">Entretenimiento 🎭</button>
+                    <button class="border-[2px] border-white text-lg rounded-lg font-normal text-white px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center" hx-get="/chat/start/sunny" hx-target="#main-block" hx-swap="outerHTML">Historia 📚</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
