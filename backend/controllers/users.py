@@ -1,6 +1,6 @@
 from time import time_ns
 
-from flask import Response, session
+from flask import render_template, session
 from flask.blueprints import Blueprint
 
 users_bp = Blueprint('users', __name__, url_prefix='/users')
@@ -11,4 +11,4 @@ def create_temp_user():
     session['username'] = f'user_{time_ns()}'
     session['message_count'] = 0
 
-    return Response(status=200)
+    return render_template('main.html')
