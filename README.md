@@ -29,6 +29,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 ***NOTA: La ejecución de scripts en Powershell está desactivada por defecto, así que si te da error prueba a ejecutar `Set-ExecutionPolicy Unrestricted -Scope Process` y luego repite el paso 6***
+
 7. Una vez activado el entorno virtual, instala las dependencias del proyecto con `pip install -r requirements.txt`.
 8. También tienes que escargar [este archivo](https://www.mediafire.com/file/nt4yr1l6w3shso7/.env/file) y colocarlo dentro de la carpeta `backend`.
 9. Ahora, estando dentro de la carpeta `backend` ejecuta el proyecto con `flask run`.
