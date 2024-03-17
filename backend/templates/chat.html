@@ -1,13 +1,17 @@
 <div id="main-block">
     <div id="messages">
         {% for message in messages[1:] %}
-            <p>{{ message.get("parts")[0] }}</p>
+            {% if message.get("role") == "model" %}
+                <p class="ia-message">{{ message.get("parts")[0] }}</p>
+            {% else %}
+                <p class="user-message">{{ message.get("parts")[0] }}</p>
+            {% endif %}
         {% endfor %}
     </div>
-    <form hx-post="/chat/answer" hx-trigger="submit" hx-target="#messages">
+    <form hx-post="/chat/answer/{{ personality }}" hx-trigger="submit" hx-target="#main-block">
         <input name="prompt" type="text" placeholder="Habla con la IA" class="form-text" id="prompt-text">
         <button id="send-message" type="submit">Send message</button>
     </form>
-    <button hx-delete="/chat/start/{{ personality }}" hx-target="#messages">Reiniciar chat</button>
+    <button hx-delete="/chat/start/{{ personality }}" hx-target="#main-block">Reiniciar chat</button>
     <button hx-put="/assistants" hx-target="#main-block" hx-swap="outerHTML">Ir al menú de selección</button>
 </div>
