@@ -23,6 +23,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 /**
@@ -137,7 +138,6 @@ sub,
 sup {
   font-size: 75%;
   line-height: 0;
-  position: relative;
   vertical-align: baseline;
 }
 
@@ -377,21 +377,28 @@ template {
   display: none;
 }
 
+#input-welcome{
+  text-align: center;
+}
+
 /*Estilos cards asistentes
 */
 
 .assistants-container {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  height: fit-content;
+
   @media screen and (max-width: 768px) {
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
   }
+
   @media screen and (max-width: 480px) {
-    grid-template-columns: repeat(1,1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(6, 1fr);
   }
 }
@@ -402,9 +409,9 @@ template {
   align-items: center;
   justify-content: center;
   gap: 1em;
-  padding: .5rem;
   transform: perspective(750px) translate3d(0px, 0px, -250px) rotateX(27deg) scale(0.9, 0.9);
-            transition: 0.4s ease-in-out transform, 0.4s ease-in-out box-shadow;
+  transition: 0.4s ease-in-out transform, 0.4s ease-in-out box-shadow;
+
   &:hover {
     transform: translate(-8px, -16px);
   }
@@ -412,23 +419,54 @@ template {
 
 .assistant-img {
   width: 100%;
-  max-width: 13rem;
+  max-width: 15rem;
   border-radius: 5px;
 }
 
 /* Estilos contenedor mensajes chat
  */
-#messages{
+#messages {
+  width: 90vw;
+  height: auto;
+  overflow-y: auto;
 }
 
 /* Estilos input chat
  */
-.input-chatIA{
-  display: inline-block;
-align-self: flex-end;
+.input-chatIA {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 1em;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
 }
 
-#prompt-text{
+#prompt-text {
   width: 60vw;
   text-align: center;
+}
+
+/* Estilos chat IA container */
+
+.chat-Ia-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.chatIa{
+  display: inline-block;
+}
+.assistant-icon{
+  width: 3rem;
+  margin-right: 1em;
+  border-radius: 5px;
+}
+
+/* Estilos chat usuario container */
+.user-message , .chatUser{
+text-align: end;
 }
