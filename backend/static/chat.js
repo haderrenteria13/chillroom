@@ -1,3 +1,5 @@
+import { fadeOutForAll } from './asistant.js';
+
 /* Este era el ideal pero al recargase la pagina da error al intentar reDeclarar varibles existentes
 let userName = sessionStorage.getItem('userName'); `${userName}:`;
 let chatUserName = document.getElementsByClassName('chatUser');
@@ -37,4 +39,9 @@ document.getElementById("salir-btn").addEventListener("click", () => {
         chatIaContainer = "";
         chatUserName = "";
         userName = ""; */
+        const elements = document.getElementsByClassName("fadeOut");
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].classList.remove("animate__fadeIn");
+            elements[i].classList.add("animate__fadeOut");
+        }
 })

@@ -1,6 +1,6 @@
-<div id="main-block" class="animate__animated animate__fadeIn bg-cover bg-center h-screen bg-[url('static/elige-categoria.png')] bg-[#14121C]">
+<div id="main-block" class="bg-cover bg-center h-screen bg-[url('static/elige-categoria.png')] bg-[#14121C]">
     <nav>
-        <div class="flex items-center py-4 bg-[#7EBAFB]">
+        <div class="flex items-center py-4 bg-[#7EBAFB] animate__animated animate__fadeIn">
             <div class="pl-10">
                 <button hx-put="/assistants" hx-target="#main-block" hx-swap="outerHTML"
                     class="border-[1px] border-[#14121C] bg-white/5 backdrop-blur-sm text-sm rounded-full font-bold text-[#14121C] px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center" id="salir-btn">Salir</button>
@@ -13,7 +13,7 @@
             </div>
         </div>
     </nav>
-    <div class="container mx-auto px-10">
+    <div class="container mx-auto px-10 animate__animated animate__fadeIn">
         <div class="flex flex-col items-start">
             <p class="text-slate-400 text-lg pb-3">¿Qué te gustaria aprender hoy?</p>
         </div>
@@ -38,7 +38,7 @@
 
     </div>
     <form hx-post="/chat/answer/{{ personality }}" hx-trigger="submit" hx-target="#main-block"
-    class="flex gap-2 items-center justify-center input-chatIA">
+    class="flex gap-2 items-center justify-center input-chatIA animate__animated animate__fadeIn">
     <input name="prompt" type="text" placeholder="Habla con la IA" maxlength="100"
     class="button border-[3px] border-white bg-white/5 backdrop-blur-sm text-base md:text-sm lg:text-sm sm:text-sm rounded-lg font-medium text-white py-2 md:py-2 lg:py-3 hover:bg-white hover:text-black transition-colors text-left::placeholder"
     id="prompt-text">
