@@ -26,13 +26,6 @@ body {
   position: relative;
 }
 
-/**
-   * Render the `main` element consistently in IE.
-   */
-
-main {
-  display: block;
-}
 
 /**
    * Correct the font size and margin on `h1` elements within `section` and
@@ -377,7 +370,7 @@ template {
   display: none;
 }
 
-#input-welcome{
+#input-welcome {
   text-align: center;
 }
 
@@ -390,7 +383,7 @@ template {
   grid-template-rows: repeat(2, 1fr);
   align-items: flex-start;
   justify-content: center;
-  height: fit-content;
+  width: 60vw;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
@@ -409,7 +402,6 @@ template {
   align-items: center;
   justify-content: center;
   gap: 1em;
-  transform: perspective(750px) translate3d(0px, 0px, -250px) rotateX(27deg) scale(0.9, 0.9);
   transition: 0.4s ease-in-out transform, 0.4s ease-in-out box-shadow;
 
   &:hover {
@@ -419,15 +411,14 @@ template {
 
 .assistant-img {
   width: 100%;
-  max-width: 15rem;
+  max-width: 6rem;
   border-radius: 5px;
 }
 
-/* Estilos contenedor mensajes chat
- */
+/* Estilos contenedor mensajes chat*/
 #messages {
   width: 90vw;
-  height: auto;
+  height: 65vh;
   overflow-y: auto;
 }
 
@@ -437,6 +428,7 @@ template {
   position: absolute;
   bottom: 0;
   margin-bottom: 1em;
+  display: block;
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -450,23 +442,37 @@ template {
 
 /* Estilos chat IA container */
 
-.chat-Ia-container{
+.chat-ia-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 }
 
-.chatIa{
+.chatIa {
   display: inline-block;
 }
-.assistant-icon{
+
+.assistant-icon {
+  display: inline-block;
   width: 3rem;
   margin-right: 1em;
   border-radius: 5px;
 }
 
-/* Estilos chat usuario container */
-.user-message , .chatUser{
-text-align: end;
+/* Estilos chat usuario */
+.user-message,
+.chatUser {
+  text-align: end;
+}
+
+.title-chat {
+  justify-self: flex-start;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

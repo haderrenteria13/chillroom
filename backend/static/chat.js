@@ -1,5 +1,3 @@
-import { fadeOutForAll } from './asistant.js';
-
 /* Este era el ideal pero al recargase la pagina da error al intentar reDeclarar varibles existentes
 let userName = sessionStorage.getItem('userName'); `${userName}:`;
 let chatUserName = document.getElementsByClassName('chatUser');
@@ -39,9 +37,39 @@ document.getElementById("salir-btn").addEventListener("click", () => {
         chatIaContainer = "";
         chatUserName = "";
         userName = ""; */
-        const elements = document.getElementsByClassName("fadeOut");
-        for (let i = 0; i < elements.length; i++) {
-            elements[i].classList.remove("animate__fadeIn");
-            elements[i].classList.add("animate__fadeOut");
-        }
+    const elements = document.getElementsByClassName("fadeOut");
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].classList.remove("animate__fadeIn");
+        elements[i].classList.add("animate__fadeOut");
+    }
 })
+/* 
+//input chat IA borrar y bloquear
+document.getElementById("prompt-text").addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+        // Deshabilitar el campo de entrada durante 0.5 segundos
+        document.getElementById("prompt-text").disabled = true;
+        document.getElementById("send-message").disabled = true;
+        setTimeout(() => {
+            document.getElementById("prompt-text").value = "";
+            // Habilitar el campo de entrada después de borrar el contenido
+            document.getElementById("prompt-text").disabled = false;
+            document.getElementById("send-message").disabled = false;
+        }, 1000)
+    }
+})
+
+//boton chat IA borrar y bloquear
+document.getElementById("send-message").addEventListener("click", sendChatIa)
+
+function sendChatIa(){
+    // Deshabilitar el campo de entrada durante 0.5 segundos
+    document.getElementById("send-message").disabled = true;
+    document.getElementById("prompt-text").disabled = true;
+    setTimeout(() => {
+        document.getElementById("prompt-text").value = "";
+        // Habilitar el campo de entrada después de borrar el contenido
+        document.getElementById("prompt-text").disabled = false;
+        document.getElementById("send-message").disabled = false;
+    }, 1000)
+} */

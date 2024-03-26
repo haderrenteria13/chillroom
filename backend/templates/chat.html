@@ -1,9 +1,11 @@
-<div id="main-block" class="bg-cover bg-center h-screen bg-[url('static/elige-categoria.png')] bg-[#14121C]">
+<div id="main-block" class="bg-cover bg-center bg-[url('static/elige-categoria.png')] bg-[#14121C]">
+
     <nav>
         <div class="flex items-center py-4 bg-[#7EBAFB] animate__animated animate__fadeIn fadeOut">
             <div class="pl-10">
                 <button hx-put="/assistants" hx-target="#main-block" hx-swap="outerHTML"
-                    class="border-[1px] border-[#14121C] bg-white/5 backdrop-blur-sm text-sm rounded-full font-bold text-[#14121C] px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center" id="salir-btn">Salir</button>
+                    class="border-[1px] border-[#14121C] bg-white/5 backdrop-blur-sm text-sm rounded-full font-bold text-[#14121C] px-9 py-2 hover:bg-[#7EBAFB] hover:text-black transition-colors flex items-center"
+                    id="salir-btn">Salir</button>
 
             </div>
             <div class="pl-2">
@@ -13,47 +15,49 @@
             </div>
         </div>
     </nav>
-    <div class="container mx-auto px-10 animate__animated animate__fadeIn fadeOut">
-        <div class="flex flex-col items-start">
+
+    <main>
+
+        <div class="title-chat animate__animated animate__fadeIn fadeOut">
             <p class="text-slate-400 text-lg pb-3">¿Qué te gustaria aprender hoy?</p>
         </div>
 
-            <div id="main-block">
-                <div id="messages">
-                    {% for message in messages[1:] %}
-                    {% if message.get("role") == "model" %}
-                    <div class="chat-ia-container">
-                        <h3 class="ia-title text-slate-400 chatIa"></h3>
-                    </div>
-
-                    <p class="ia-message text-white">{{ message.get("parts")[0] }}</p>
-                    {% else %}
-                        <h3 class="text-slate-400 chatUser"></h3>
-                        <p class="text-white user-message">{{ message.get("parts")[0] }}</p>
-
-                    {% endif %}
-                    {% endfor %}
+        <div id="main-block" class="cont-chat animate__animated animate__fadeIn fadeOut">
+            <div id="messages">
+                {% for message in messages[1:] %}
+                {% if message.get("role") == "model" %}
+                <div class="chat-ia-container">
+                    <h3 class="ia-title text-slate-400 chatIa"></h3>
                 </div>
-            </div>
 
-    </div>
-    <form hx-post="/chat/answer/{{ personality }}" hx-trigger="submit" hx-target="#main-block"
-    class="flex gap-2 items-center justify-center input-chatIA animate__animated animate__fadeIn fadeOut">
-    <input name="prompt" type="text" placeholder="Habla con la IA" maxlength="100"
-    class="button border-[3px] border-white bg-white/5 backdrop-blur-sm text-base md:text-sm lg:text-sm sm:text-sm rounded-lg font-medium text-white py-2 md:py-2 lg:py-3 hover:bg-white hover:text-black transition-colors text-left::placeholder"
-    id="prompt-text">
-    <button id="send-message" type="submit" title="Send Message"
-    class="button border-[3px] border-white bg-white/5 backdrop-blur-sm text-base md:text-sm lg:text-sm sm:text-sm rounded-lg font-medium text-white transition-colors flex items-center px-6 md:px-12 py-2 md:py-2 lg:py-3">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-send-2 text-white">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path
-            d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" />
-            <path d="M6.5 12h14.5" />
-        </svg>
-    </button>
-</form>
+                <p class="ia-message text-white">{{ message.get("parts")[0] }}</p>
+                {% else %}
+                <h3 class="text-slate-400 chatUser"></h3>
+                <p class="text-white user-message">{{ message.get("parts")[0] }}</p>
+
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </main>
 </div>
+
+        <form hx-post="/chat/answer/{{ personality }}" hx-trigger="submit" hx-target="#main-block"
+            class="gap-2 input-chatIA animate__animated animate__fadeIn fadeOut">
+            <input name="prompt" type="text" placeholder="Habla con la IA" maxlength="100"
+                class="button border-[3px] border-white bg-white/5 backdrop-blur-sm text-base md:text-sm lg:text-sm sm:text-sm rounded-lg font-medium text-white py-2 md:py-2 lg:py-3 hover:bg-white hover:text-black transition-colors text-left::placeholder"
+                id="prompt-text">
+            <button id="send-message" type="submit" title="Send Message"
+                class="button border-[3px] border-white bg-white/5 backdrop-blur-sm text-base md:text-sm lg:text-sm sm:text-sm rounded-lg font-medium text-white transition-colors flex items-center px-6 md:px-12 py-2 md:py-2 lg:py-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-send-2 text-white">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" />
+                    <path d="M6.5 12h14.5" />
+                </svg>
+            </button>
+        </form>
 
 <script src="../static/chat.js"></script>
