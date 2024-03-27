@@ -43,7 +43,7 @@ document.getElementById("salir-btn").addEventListener("click", () => {
         elements[i].classList.add("animate__fadeOut");
     }
 })
-/* 
+/*
 //input chat IA borrar y bloquear
 document.getElementById("prompt-text").addEventListener("keyup", (event) => {
     if (event.key === "Enter") {

@@ -40,24 +40,24 @@
             </div>
         </div>
     </main>
-</div>
-
-        <form hx-post="/chat/answer/{{ personality }}" hx-trigger="submit" hx-target="#main-block"
-            class="gap-2 input-chatIA animate__animated animate__fadeIn fadeOut">
-            <input name="prompt" type="text" placeholder="Habla con la IA" maxlength="100"
-                class="button border-[3px] border-white bg-white/5 backdrop-blur-sm text-base md:text-sm lg:text-sm sm:text-sm rounded-lg font-medium text-white py-2 md:py-2 lg:py-3 hover:bg-white hover:text-black transition-colors text-left::placeholder"
-                id="prompt-text">
-            <button id="send-message" type="submit" title="Send Message"
+    
+    <form hx-post="/chat/answer/{{ personality }}" hx-trigger="submit" hx-target="#main-block"
+    class="gap-2 input-chatIA animate__animated animate__fadeIn fadeOut">
+    <input name="prompt" type="text" placeholder="Habla con la IA" maxlength="100"
+    class="button border-[3px] border-white bg-white/5 backdrop-blur-sm text-base md:text-sm lg:text-sm sm:text-sm rounded-lg font-medium text-white py-2 md:py-2 lg:py-3 hover:bg-white hover:text-black transition-colors text-left::placeholder"
+    id="prompt-text">
+    <button id="send-message" type="submit" title="Send Message"
                 class="button border-[3px] border-white bg-white/5 backdrop-blur-sm text-base md:text-sm lg:text-sm sm:text-sm rounded-lg font-medium text-white transition-colors flex items-center px-6 md:px-12 py-2 md:py-2 lg:py-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-send-2 text-white">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path
-                        d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" />
-                    <path d="M6.5 12h14.5" />
-                </svg>
-            </button>
-        </form>
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-send-2 text-white">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" />
+                <path d="M6.5 12h14.5" />
+            </svg>
+        </button>
+    </form>
+</div>
 
 <script src="../static/chat.js"></script>
